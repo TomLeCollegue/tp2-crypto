@@ -10,7 +10,6 @@ fun main(args: Array<String>) {
     val text = "Je trouve ca impressionant comme truc c'est assez dingue de ouf"
     hideTextInImage(image, text = text)
 
-
     val newFile = File("./hideText.png")
     ImageIO.write(image, "png", newFile)
 
@@ -33,10 +32,9 @@ fun hideTextInImage(image: BufferedImage, text: String) {
 }
 
 fun Color.changeFirstBin(binNumber: Char) : Color{
-    val redBin = red.toString(2)
-    val newRed = redBin.substring(0, 7) + binNumber
-    val lastRed = Integer.parseInt(newRed, 2)
-    return Color(lastRed, green, blue)
+    val redBin = red.toString(2).substring(0, 7) + binNumber
+    val newRed = Integer.parseInt(redBin, 2)
+    return Color(newRed, green, blue)
 }
 
 fun decodeTextFromImage(image: BufferedImage, sizeText: Int) {
