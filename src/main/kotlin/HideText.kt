@@ -1,23 +1,5 @@
 import java.awt.Color
 import java.awt.image.BufferedImage
-import java.io.File
-import javax.imageio.ImageIO
-
-fun main(args: Array<String>) {
-    val file = File("./chablais-orig.png")
-    val image = ImageIO.read(file)
-
-    val text = "Je trouve ca impressionant comme truc c'est assez dingue de ouf"
-    hideTextInImage(image, text = text)
-
-    val newFile = File("./hideText.png")
-    ImageIO.write(image, "png", newFile)
-
-    val fileSecret = File("./hideText.png")
-    val imageSecret = ImageIO.read(fileSecret)
-    decodeTextFromImage(imageSecret, text.length)
-}
-
 
 fun hideTextInImage(image: BufferedImage, text: String) {
     val byteArray = text.toByteArray()
@@ -31,7 +13,7 @@ fun hideTextInImage(image: BufferedImage, text: String) {
     }
 }
 
-fun Color.changeFirstBin(binNumber: Char) : Color{
+fun Color.changeFirstBin(binNumber: Char) : Color {
     val redBin = red.toString(2).substring(0, 7) + binNumber
     val newRed = Integer.parseInt(redBin, 2)
     return Color(newRed, green, blue)
@@ -49,8 +31,4 @@ fun decodeTextFromImage(image: BufferedImage, sizeText: Int) {
         result += Integer.parseInt(charInBinary, 2).toChar().toString()
     }
     println(result)
-}
-
-fun Byte.toByteWith8bits() : String{
-    return "0000000${toString(2)}".takeLast(8)
 }
