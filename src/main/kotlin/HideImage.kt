@@ -38,11 +38,6 @@ fun Int.extractHiddenInt(): Int {
 }
 
 fun Color.fusionWithOtherPixel(colorToHide: Color): Color {
-    val red = this.red.fusionWithOther(colorToHide.red)
-    val green = this.green.fusionWithOther(colorToHide.green)
-    val blue = this.blue.fusionWithOther(colorToHide.blue)
-    println("$red $green $blue")
-
     return Color(
         this.red.fusionWithOther(colorToHide.red),
         this.green.fusionWithOther(colorToHide.green),
@@ -53,6 +48,5 @@ fun Color.fusionWithOtherPixel(colorToHide: Color): Color {
 fun Int.fusionWithOther(intToHide: Int): Int {
     val newIntBinary = this.toByteWith8bits().substring(0, 4) +
             intToHide.toByteWith8bits().substring(0, 4)
-    println("${this.toByteWith8bits()} ${intToHide.toByteWith8bits()} $newIntBinary")
     return Integer.parseInt(newIntBinary, 2)
 }

@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
 
     val fileSecret = File("./hideText.png")
     val imageSecret = ImageIO.read(fileSecret)
-    decodeTextFromImage(imageSecret, text.length)
+    print(decodeTextFromImage(imageSecret, text.length))
 }
 
 
